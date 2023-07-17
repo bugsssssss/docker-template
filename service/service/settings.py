@@ -70,7 +70,7 @@ DATABASES = {
 }
 
 DATABASES = {
-    'defaukt': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get('DB_HOST'),
         'NAME': os.environ.get('DB_NAME'),
