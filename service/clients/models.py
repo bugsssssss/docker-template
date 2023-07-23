@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Client(models.Model):
 
     user = models.OneToOneField(User, verbose_name=("Client"), on_delete=models.PROTECT)
