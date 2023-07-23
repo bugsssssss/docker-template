@@ -23,6 +23,7 @@ class Service(models.Model):
         if self.full_price != self.__full_price:
             for sub in self.subscribtions.all():
                 set_price.delay(sub.id)
+                set_comment.delay(sub.id)
 
         return super().save(*args, **kwargs)
 
@@ -50,6 +51,7 @@ class Plan(models.Model):
         if self.discount_percent != self.__discount_percent:
             for sub in self.subscribtions.all():
                 set_price.delay(sub.id)
+                set_comment.delay(sub.id)
 
         return super().save(*args, **kwargs)
 
