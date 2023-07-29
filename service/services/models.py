@@ -65,7 +65,7 @@ class Subscription(models.Model):
     service = models.ForeignKey(Service, related_name='subscribtions', on_delete=models.PROTECT)
     plan = models.ForeignKey(Plan, related_name='subscribtions', on_delete=models.PROTECT)
     price = models.PositiveIntegerField(default=0)
-    
+
     #? ДБ индексы ускоряют поиск, но делают бд тяжелее
     comment = models.CharField(("comment"), max_length=50, default='', db_index=True)
 
@@ -79,13 +79,14 @@ class Subscription(models.Model):
         indexes = [
             models.Index(fields=['field_a', 'field_b'])
         ]
+        ordering = ['id']
 
 
     def save(self, *args, **kwargs):
         creating = not bool(self.id)
         result  = super().save(*args, **kwargs)
-        # if creating:
-        #     set_price.delay(self.id)
+        if creating:
+            set_price.delay(self.id)
         return result
 
 

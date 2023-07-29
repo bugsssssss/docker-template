@@ -26,6 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'cachalot',
+
+    
+
     'clients',
     'services'
 ]
@@ -145,7 +150,7 @@ LOGGING = {
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 
 
-
+#? Redis cache
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
